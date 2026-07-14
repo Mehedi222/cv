@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resume — Mehedi Hasan Shanto</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  :root {
+    --ink: #16213B;
+    --ink-soft: #2E3B57;
+    --gold: #B8902F;
+    --paper: #FBFAF6;
+    --text: #23262B;
+    --muted: #6B7280;
+    --line: #E4E1D6;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text);
+    background: #DDD9CD;
+    display: flex;
+    justify-content: center;
+    padding: 32px 16px;
+  }
+
+  .page {
+    display: flex;
+    width: 100%;
+    max-width: 960px;
+    min-height: 1250px;
+    background: var(--paper);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.18);
+  }
+
+  /* ---------- Sidebar ---------- */
+
+  .sidebar {
+    width: 33%;
+    background: var(--ink);
+    color: #E8E9ED;
+    padding: 44px 28px;
+  }
+
+  .identity { margin-bottom: 40px; }
+
+  .name {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 2.1rem;
+    line-height: 1.12;
+    color: #FFFFFF;
+  }
+
+  .role {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--gold);
+    margin-top: 10px;
+    letter-spacing: 0.02em;
+  }
+
+  .side-block { margin-bottom: 32px; }
+
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    color: var(--gold);
+    text-transform: lowercase;
+    border-bottom: 1px solid rgba(184,144,47,0.35);
+    padding-bottom: 8px;
+    margin-bottom: 14px;
+  }
+
+  .eyebrow.dark {
+    color: var(--gold);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .contact-list, .plain-list {
+    list-style: none;
+    font-size: 0.85rem;
+  }
+
+  .contact-list li, .plain-list li {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 9px;
+    color: #D3D6DE;
+    word-break: break-word;
+  }
+
+  .contact-list .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--gold);
+    width: 30px;
+    flex-shrink: 0;
+    padding-top: 1px;
+  }
+
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+  }
+
+  .chips span {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: #E8E9ED;
+    border: 1px solid rgba(232,233,237,0.25);
+    padding: 4px 9px;
+    border-radius: 3px;
+  }
+
+  .plain-list.two-col .level {
+    margin-left: auto;
+    color: var(--gold);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+  }
+
+  .sidebar .plain-list.two-col li {
+    color: #fff;
+  }
+
+  .edu-item .edu-degree {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: #fff;
+    margin-bottom: 3px;
+  }
+
+  .edu-item .edu-school {
+    font-size: 0.8rem;
+    color: #D3D6DE;
+    margin-bottom: 3px;
+  }
+
+  .edu-item .edu-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--muted);
+  }
+
+  /* ---------- Main content ---------- */
+
+  .content {
+    width: 67%;
+    padding: 48px 40px;
+  }
+
+  .block { margin-bottom: 34px; }
+  .block:last-child { margin-bottom: 0; }
+
+  .summary {
+    font-size: 0.92rem;
+    line-height: 1.65;
+    color: var(--text);
+    max-width: 54ch;
+  }
+
+  .entry { margin-bottom: 22px; }
+  .entry:last-child { margin-bottom: 0; }
+
+  .entry-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 6px;
+  }
+
+  .entry-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.08rem;
+    color: var(--ink);
+  }
+
+  .entry-org {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  .entry-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  .bullets {
+    list-style: none;
+    margin-top: 8px;
+  }
+
+  .bullets li {
+    font-size: 0.87rem;
+    line-height: 1.55;
+    color: var(--text);
+    padding-left: 16px;
+    position: relative;
+    margin-bottom: 5px;
+  }
+
+  .bullets li::before {
+    content: "–";
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+  }
+
+  .plain-list.two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 20px;
+    font-size: 0.85rem;
+  }
+
+  .plain-list.two-col li {
+    color: var(--text);
+    list-style: none;
+  }
+
+  /* ---------- Print ---------- */
+
+  @media print {
+    body { background: none; padding: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .page { box-shadow: none; max-width: 100%; min-height: 0; }
+    .entry, .side-block, .block { break-inside: avoid; }
+    @page { size: A4; margin: 0; }
+  }
+
+  /* ---------- Small screens ---------- */
+
+  @media (max-width: 720px) {
+    .page { flex-direction: column; }
+    .sidebar, .content { width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <aside class="sidebar">
+    <div class="identity">
+      <h1 class="name">Mehedi Hasan<br>Shanto</h1>
+      <p class="role">Full-Stack Developer & Founder</p>
+    </div>
+
+    <section class="side-block">
+      <h2 class="eyebrow">// contact</h2>
+      <ul class="contact-list">
+        <li><span class="label">mail</span> shantomehedihasan2001@gmail.com</li>
+        <li><span class="label">tel</span> +8801322080199</li>
+        <li><span class="label">loc</span> Dhaka, Bangladesh</li>
+        <li><span class="label">web</span> hasanshanto.w3spaces.com</li>
+        <li><span class="label">git</span> https://github.com/Mehedi222?tab=overview&from=2026-07-01&to=2026-07-14</li>
+      </ul>
+    </section>
+
+    <section class="side-block">
+      <h2 class="eyebrow">// skills</h2>
+      <div class="chips">
+        <span>Next.js</span>
+        <span>React</span>
+        <span>TypeScript</span>
+        <span>Tailwind CSS</span>
+        <span>shadcn/ui</span>
+        <span>Prisma</span>
+        <span>PostgreSQL</span>
+        <span>Redis / BullMQ</span>
+        <span>LangChain</span>
+        <span>TensorFlow / Keras</span>
+      </div>
+    </section>
+
+    <section class="side-block">
+      <h2 class="eyebrow">// languages</h2>
+      <ul class="plain-list two-col">
+        <li>Bangla <span class="level">native</span></li>
+        <li>English <span class="level">fluent</span></li>
+      </ul>
+    </section>
+
+    <section class="side-block">
+      <h2 class="eyebrow">// education</h2>
+      <div class="edu-item">
+        <p class="edu-degree">B.Sc. Computer Science</p>
+        <p class="edu-school">University of IUB</p>
+        <p class="edu-date">Undergraduate</p>
+      </div>
+    </section>
+  </aside>
+
+  <main class="content">
+
+    <section class="block">
+      <h2 class="eyebrow dark">// summary</h2>
+      <p class="summary">
+        CS student and founder building full-stack products end to end, from
+        database schema to production UI. Currently running a manpower recruitment
+        platform and a portfolio-tracking SaaS in parallel, alongside freelance
+        client work and a growing interest in applied ML.
+      </p>
+    </section>
+
+    <section class="block">
+      <h2 class="eyebrow dark">// experience</h2>
+
+      <div class="entry">
+        <div class="entry-head">
+          <div>
+            <h3 class="entry-title">IT Officer & Co-Founder</h3>
+            <p class="entry-org">Linking Overseas Ltd — BMET-licensed manpower recruitment agency (RL-2081)</p>
+          </div>
+          <p class="entry-date">2024 — Present</p>
+        </div>
+        <ul class="bullets">
+          <li>Architected and built the company platform on Next.js 16, TypeScript, and Tailwind CSS v4, including BullMQ/Redis job queuing and Prisma Accelerate/PgBouncer connection pooling for scale.</li>
+          <li>Built OCR-based passport and CV scanning with MRZ parsing to automate candidate document intake.</li>
+          <li>Authored a five-document technical documentation suite covering architecture, infra, and workflows.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head">
+          <div>
+            <h3 class="entry-title">Founder</h3>
+            <p class="entry-org">StockHub — portfolio tracking SaaS</p>
+          </div>
+          <p class="entry-date">2024 — Present</p>
+        </div>
+        <ul class="bullets">
+          <li>Built end to end on Next.js 16, React 19, TypeScript (strict), Prisma 7, PostgreSQL, and BetterAuth, deployed on Vercel.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head">
+          <div>
+            <h3 class="entry-title">Freelance Full-Stack Developer</h3>
+            <p class="entry-org">Self-employed</p>
+          </div>
+          <p class="entry-date">2024 — Present</p>
+        </div>
+        <ul class="bullets">
+          <li>Delivered custom web applications using React, Node.js, and PostgreSQL for diverse clients.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2 class="eyebrow dark">// projects</h2>
+      <div class="entry">
+        <div class="entry-head">
+          <div>
+            <h3 class="entry-title">Tomato Leaf Disease Detection</h3>
+            <p class="entry-org">Personal project</p>
+          </div>
+          <p class="entry-date">2025</p>
+        </div>
+        <ul class="bullets">
+          <li>CNN-based classifier (TensorFlow/Keras) with GradCAM explainability, served via Streamlit with a two-tier access control system.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head">
+          <div>
+            <h3 class="entry-title">LangChain Content Generation Agent</h3>
+            <p class="entry-org">Personal project</p>
+          </div>
+          <p class="entry-date">2025</p>
+        </div>
+        <ul class="bullets">
+          <li>Built a working local content-generation agent while studying LangChain's Models, Prompts, Chains, Memory, and Agents modules in depth.</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+</div>
+
+</body>
+</html>
